@@ -9,13 +9,11 @@ const Articles = () => {
     useEffect(() => {
         console.log('hello')
         getArticles().then(({data}) => {
-            console.log(data);
             setArticleList(data);
         });
     
       }, []);
 
-console.log(articleList)
 
   return (
     
@@ -23,6 +21,7 @@ console.log(articleList)
         {articleList.map((article) => {
           return (
             <li key={article.article_id}>
+              <h2 class="sub-header"> Latest Articles:</h2>
               <h3>{article.title}</h3>
 
               {/* <br /> */}

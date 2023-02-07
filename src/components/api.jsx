@@ -8,3 +8,7 @@ export const getArticleById = (article_id) => {
     return axios.get(`https://be-nc-news-jz.onrender.com/api/articles/${article_id}`)   
 
 }
+
+export const getCommentsdById = (article_id) => {
+    return  axios.get(`https://be-nc-news-jz.onrender.com/api/articles/${article_id}/comments`)
+    }

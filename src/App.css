@@ -46,3 +46,8 @@
 #date {
 margin-bottom: 80px;
 }
+
+#articleImage{
+  height: 300px;
+  width: 300px;
+}

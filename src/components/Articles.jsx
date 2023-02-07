@@ -4,10 +4,8 @@ import { getArticles} from "./api";
 
 const Articles = () => {
     const [articleList, setArticleList] = useState([])
-    // const { article_name } = useParams();
     
     useEffect(() => {
-        console.log('hello')
         getArticles().then(({data}) => {
             setArticleList(data);
         });

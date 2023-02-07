@@ -8,9 +8,9 @@ const Articles = () => {
     
     useEffect(() => {
         console.log('hello')
-        getArticles().then(({response}) => {
-            console.log('hello');
-            // setArticleList(data.items);
+        getArticles().then(({data}) => {
+            console.log(data);
+            setArticleList(data);
         });
     
       }, []);
@@ -23,10 +23,12 @@ console.log(articleList)
         {articleList.map((article) => {
           return (
             <li key={article.article_id}>
-              {article.article_name}
-              <br />
+              <h3>{article.title}</h3>
+
+              {/* <br /> */}
               <img className="images" src={article.article_img_url}></img>
-              
+              <h4>{article.topic}</h4>
+              <h4 id="date">{article.created_at}</h4>
             </li>
           );
         })}

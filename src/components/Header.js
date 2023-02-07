@@ -1,6 +1,6 @@
 const Header = () => {
-  return <div><h1>Welcome to NC News</h1>
-  <h2> Latest Articles:</h2>
+  return <div><h1 class="mainheader">Welcome to NC News</h1>
+  <h2 class="sub-header"> Latest Articles:</h2>
   
   </div>;
 

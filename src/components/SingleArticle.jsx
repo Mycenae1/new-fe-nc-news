@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getArticleById } from "./api";
 import { Link, useParams } from "react-router-dom";
 import Comments from "./Comments"
+const dayjs = require('dayjs')
 
 
 const SingleArticle = () => {
@@ -18,6 +19,8 @@ const SingleArticle = () => {
 
     }, [article_id])
 
+    const date = dayjs(article.created_at).format('DD-MM-YYYY h:mm A');
+
     if (isLoading) return <p>Loading Articles...</p>
     return (
       <section>
@@ -30,9 +33,10 @@ const SingleArticle = () => {
             <img id="articleImage" src={article.article_img_url }
             alt={'Oops...No Image'}></img>
             <p>{article.author}</p>
-            <p>{article.created_at}</p>
+            <p>{date}</p>
             <p>Votes: {article.votes}</p>
             <p>{article.body}</p>
+            <br/>
             <Comments article_id={article_id}/>
            
           </li>

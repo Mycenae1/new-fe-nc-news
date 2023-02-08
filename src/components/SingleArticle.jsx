@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getArticleById } from "./api";
 import { Link, useParams } from "react-router-dom";
 import Comments from "./Comments"
+import Votes from "./Votes"
 const dayjs = require('dayjs')
 
 
@@ -34,7 +35,7 @@ const SingleArticle = () => {
             alt={'Oops...No Image'}></img>
             <p>{article.author}</p>
             <p>{date}</p>
-            <p>Votes: {article.votes}</p>
+            <div><Votes votes={article.votes} article_id={article_id}/> </div>
             <p>{article.body}</p>
             <br/>
             <Comments article_id={article_id}/>

@@ -23,8 +23,8 @@ const Articles = () => {
   if (isLoading) return <p>Loading Articles...</p>
 
   return (
-    
       <ul>
+    <h2>Click to read articles below</h2>
         {articleList.map((article) => {
           const date = dayjs(article.created_at).format('DD-MM-YYYY h:mm A');
           return (

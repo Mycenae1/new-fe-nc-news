@@ -12,7 +12,6 @@ const Comments = () => {
   useEffect(() => {
     getCommentsdById(article_id).then(({ data }) => {
       setCommentList(data);
-      console.log('useEffect')
     });
   }, [article_id]);
 

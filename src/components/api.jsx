@@ -22,3 +22,15 @@ export const patchArticleById = (article_id, votes_inc) => {
 
 }
 
+export const postComment = (article_id, newComment) => {
+    const commentBody = {
+        username: "happyamy2016",
+        body: newComment
+    }
+    return axios.post(`https://be-nc-news-jz.onrender.com/api/articles/${article_id}/comments`, commentBody)
+    .then(({data}) => {
+        return data
+    
+    });
+    
+}

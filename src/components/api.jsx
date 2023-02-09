@@ -1,7 +1,11 @@
 import axios from "axios";
 
-export const getArticles = (article_id) => {
+export const getArticles = (topic) => {
+    if(!topic){
     return axios.get('https://be-nc-news-jz.onrender.com/api/articles')
+    } else if(topic){
+        return axios.get(`https://be-nc-news-jz.onrender.com/api/articles?topic=${topic}`)
+    }
 }
 
 export const getArticleById = (article_id) => {
@@ -33,4 +37,8 @@ export const postComment = (article_id, newComment) => {
     
     });
     
+}
+
+export const fetchTopics = () => {
+    return axios.get(`https://be-nc-news-jz.onrender.com/api/topics`)
 }

@@ -10,21 +10,25 @@ const Articles = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [topics, setTopics] = useState([]);
     const {topic} = useParams()
+    const [sortBy, setSortBy] = useState('created_at')
+    const [order, setOrder] = useState('DESC')
 
    
     
     useEffect(() => {
-        getArticles(topic).then(({data}) => {
+        getArticles(topic, sortBy, order).then(({data}) => {
             setArticleList(data);
             setIsLoading(false)
+            setSortBy(sortBy)
+            setOrder(order)
         });
         fetchTopics().then(({data}) => {
           setTopics(data);
         });
     
-      }, [topic]);
+      }, [topic, sortBy,order]);
 
-      
+      console.log(sortBy)
 
   if (isLoading) return <p>Loading Articles...</p>
 
@@ -41,7 +45,21 @@ const Articles = () => {
         );
       })}
       <ul>
+    
+   <section>
     <h2>Click to read articles below</h2>
+    </section>
+    <h3>Sort By:</h3>
+   
+      <button onClick={() => setSortBy('created_at')}>Date</button>
+      <button onClick={() => setSortBy('title')}>Title</button>
+      <button onClick={() => setSortBy('votes')}>Votes</button>
+      <br/>
+      <button onClick={() => setOrder('ASC')}>Ascending</button>
+      <button onClick={() => setOrder('DESC')}>Descending</button>
+    <section>
+
+    </section>
         {articleList.map((article) => {
           const date = dayjs(article.created_at).format('DD-MM-YYYY h:mm A');
           return (

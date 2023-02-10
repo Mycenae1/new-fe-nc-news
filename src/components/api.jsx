@@ -1,17 +1,19 @@
 import axios from "axios";
 
-export const getArticles = (topic, sortBy) => {
-    console.log(sortBy)
+export const getArticles = (topic, sortBy, order) => {
+    console.log(order)
     if(!topic){
     return axios.get('https://be-nc-news-jz.onrender.com/api/articles', {
         params: {
-            sort_by: sortBy
+            sort_by: sortBy,
+            order: order
         }
     })
     } else if(topic){
         return axios.get(`https://be-nc-news-jz.onrender.com/api/articles?topic=${topic}`, {
             params: {
-                sort_by: sortBy
+                sort_by: sortBy,
+                order: order
             }
     })
 }

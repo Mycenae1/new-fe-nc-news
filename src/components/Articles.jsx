@@ -11,20 +11,22 @@ const Articles = () => {
     const [topics, setTopics] = useState([]);
     const {topic} = useParams()
     const [sortBy, setSortBy] = useState('created_at')
+    const [order, setOrder] = useState('DESC')
 
    
     
     useEffect(() => {
-        getArticles(topic, sortBy).then(({data}) => {
+        getArticles(topic, sortBy, order).then(({data}) => {
             setArticleList(data);
             setIsLoading(false)
             setSortBy(sortBy)
+            setOrder(order)
         });
         fetchTopics().then(({data}) => {
           setTopics(data);
         });
     
-      }, [topic, sortBy]);
+      }, [topic, sortBy,order]);
 
       console.log(sortBy)
 
@@ -52,7 +54,9 @@ const Articles = () => {
       <button onClick={() => setSortBy('created_at')}>Date</button>
       <button onClick={() => setSortBy('title')}>Title</button>
       <button onClick={() => setSortBy('votes')}>Votes</button>
-    
+      <br/>
+      <button onClick={() => setOrder('ASC')}>Ascending</button>
+      <button onClick={() => setOrder('DESC')}>Descending</button>
     <section>
 
     </section>

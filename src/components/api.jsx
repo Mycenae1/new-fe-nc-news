@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const getArticles = (topic, sortBy, order) => {
-    console.log(order)
     if(!topic){
     return axios.get('https://be-nc-news-jz.onrender.com/api/articles', {
         params: {

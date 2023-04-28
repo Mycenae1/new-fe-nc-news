@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background: url(https://img.freepik.com/free-photo/black-sand-beach-macro-photography-silky-black-beach-texture-with-shallow-depth-field-minimalistic-black-background-tenerife-voulcanic-sandy-shore_1217-1765.jpg?w=826&t=st=1676045910~exp=1676046510~hmac=d0272a76e570943a8d8034c5e2d83b4df7dee95648495093d6cebee66c7993e1)
+    no-repeat center;
 }
 
 .App-logo {
@@ -7,21 +9,88 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .mainheader {
-  background-color: #282c34;
+  /* background-color: #282c34;
   min-height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: calc(10px + 2vmin); */
+  color: rgb(231, 231, 231);
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+
+:root {
+  /* Base font size */
   font-size: calc(10px + 2vmin);
-  color: white;
+  /* Heading height variable*/
+  --heading-height: 15em;
+}
+
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  min-height: 100vh;
+  /* background: url(https://img.freepik.com/free-photo/black-sand-beach-macro-photography-silky-black-beach-texture-with-shallow-depth-field-minimalistic-black-background-tenerife-voulcanic-sandy-shore_1217-1765.jpg?w=826&t=st=1676045910~exp=1676046510~hmac=d0272a76e570943a8d8034c5e2d83b4df7dee95648495093d6cebee66c7993e1) no-repeat center; */
+  background-color: #2b2929;
+}
+
+/* body::before {
+  /* background: url(https://img.freepik.com/free-photo/black-sand-beach-macro-photography-silky-black-beach-texture-with-shallow-depth-field-minimalistic-black-background-tenerife-voulcanic-sandy-shore_1217-1765.jpg?w=826&t=st=1676045910~exp=1676046510~hmac=d0272a76e570943a8d8034c5e2d83b4df7dee95648495093d6cebee66c7993e1) no-repeat center; */
+
+.maintext {
+  background-color: beige;
+}
+
+.Articles {
+  margin-top: 300px;
+  color: #eee8e8;
+}
+
+.SingleArticle {
+  margin-top: 300px;
+  color: #eee8e8;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  height: var(--heading-height);
+}
+
+/* Create angled background with 'before' pseudo-element */
+header::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 6em;
+  width: 100%;
+  height: calc(var(--heading-height) + 10em);
+  z-index: -1;
+  transform: skewY(-3.5deg);
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(https://images.unsplash.com/photo-1495464101292-552d0b52fe41?auto=format&fit=crop&w=1350&q=80)
+      no-repeat center,
+    linear-gradient(#4e4376, #2b5876);
+  background-size: cover;
+  border-bottom: 0.2em solid #fff;
+}
+
+#subheader {
+  margin-top: 200px;
+}
+
+.NC {
+  height: 60px;
+  width: 60px;
 }
 
 .App-link {
@@ -44,20 +113,19 @@
 }
 
 #date {
-margin-bottom: 80px;
+  margin-bottom: 80px;
 }
 
-#articleImage{
+#articleImage {
   height: 300px;
   width: 300px;
 }
 
-.comments{
+.comments {
   margin-bottom: 80px;
-
 }
 
-p.comment_author{
+p.comment_author {
   font-weight: bold;
   font-size: 1.5rem;
 }

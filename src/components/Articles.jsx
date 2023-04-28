@@ -12,7 +12,7 @@ const Articles = () => {
     const {topic} = useParams()
     const [sortBy, setSortBy] = useState('created_at')
     const [order, setOrder] = useState('DESC')
-
+    const [err, setErr] = useState(null);
    
     
     useEffect(() => {
@@ -21,17 +21,22 @@ const Articles = () => {
             setIsLoading(false)
             setSortBy(sortBy)
             setOrder(order)
-        });
+        })
         fetchTopics().then(({data}) => {
           setTopics(data);
+        })
+        .catch((err) => {
+          console.log(err);
+          setErr(err);
+          setIsLoading(false)
         });
     
       }, [topic, sortBy,order]);
 
       console.log(sortBy)
 
-  if (isLoading) return <p>Loading Articles...</p>
-
+      if (isLoading) return <p>Loading Articles...</p>
+      if(err) return <p>404 - Page not Found</p>
   return (
     <>
           {topics.map((topic) => {
@@ -44,28 +49,40 @@ const Articles = () => {
           </Link>
         );
       })}
-      <ul>
+      <ul className="Articles">
     
-   <section>
+   <section id="subheader">
     <h2>Click to read articles below</h2>
     </section>
     <h3>Sort By:</h3>
-   
-      <button onClick={() => setSortBy('created_at')}>Date</button>
+   <select onChange={(event) => {
+    setSortBy(event.target.value)
+   }}>
+    <option value='created_at'>Date</option>
+    <option value='title'>Title</option>
+    <option value='votes'>Votes</option>
+   </select>
+   <select onChange={(event) => {
+    setOrder(event.target.value)
+   }}>
+    <option value='ASC'>Ascending</option>
+    <option value='DESC'>Descending</option>
+  
+   </select>
+      {/* <button onClick={() => setSortBy('created_at')}>Date</button>
       <button onClick={() => setSortBy('title')}>Title</button>
       <button onClick={() => setSortBy('votes')}>Votes</button>
       <br/>
       <button onClick={() => setOrder('ASC')}>Ascending</button>
-      <button onClick={() => setOrder('DESC')}>Descending</button>
-    <section>
-
-    </section>
+      <button onClick={() => setOrder('DESC')}>Descending</button> */}
+  
+    <h2 className="sub-header"> Latest Articles:</h2>
         {articleList.map((article) => {
           const date = dayjs(article.created_at).format('DD-MM-YYYY h:mm A');
           return (
            
             <li key={article.article_id}>
-              <h2 className="sub-header"> Latest Articles:</h2>
+             
                <Link to={`/articles/${article.article_id}`}>
               <h3>{article.title}</h3>
 

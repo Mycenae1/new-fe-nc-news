@@ -11,11 +11,17 @@ const SingleArticle = () => {
     const [article, setArticle] = useState([])
     const [isLoading, setIsLoading] = useState(true);
     const {article_id} = useParams();
+    const [err, setErr] = useState(null);
 
     useEffect(() => {
         getArticleById(article_id).then(({data}) => {
             setArticle(data.articles)
             setIsLoading(false)
+        })
+        .catch((err) => {
+          console.log(err);
+          setErr(err);
+          setIsLoading(false)
         })
 
     }, [article_id])
@@ -23,8 +29,9 @@ const SingleArticle = () => {
     const date = dayjs(article.created_at).format('DD-MM-YYYY h:mm A');
 
     if (isLoading) return <p>Loading Articles...</p>
+    if(err) return <p>404 - Article not Found</p>
     return (
-      <section>
+      <section className ="SingleArticle">
         <h2>Article</h2>
         <br/>
         <ul>

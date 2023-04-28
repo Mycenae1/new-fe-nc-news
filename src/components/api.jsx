@@ -1,11 +1,21 @@
 import axios from "axios";
 
-export const getArticles = (topic) => {
+export const getArticles = (topic, sortBy, order) => {
     if(!topic){
-    return axios.get('https://be-nc-news-jz.onrender.com/api/articles')
+    return axios.get('https://be-nc-news-jz.onrender.com/api/articles', {
+        params: {
+            sort_by: sortBy,
+            order: order
+        }
+    })
     } else if(topic){
-        return axios.get(`https://be-nc-news-jz.onrender.com/api/articles?topic=${topic}`)
-    }
+        return axios.get(`https://be-nc-news-jz.onrender.com/api/articles?topic=${topic}`, {
+            params: {
+                sort_by: sortBy,
+                order: order
+            }
+    })
+}
 }
 
 export const getArticleById = (article_id) => {

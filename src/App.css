@@ -1,7 +1,8 @@
 .App {
+  display: flex;
   text-align: center;
-  background: url(https://img.freepik.com/free-photo/black-sand-beach-macro-photography-silky-black-beach-texture-with-shallow-depth-field-minimalistic-black-background-tenerife-voulcanic-sandy-shore_1217-1765.jpg?w=826&t=st=1676045910~exp=1676046510~hmac=d0272a76e570943a8d8034c5e2d83b4df7dee95648495093d6cebee66c7993e1)
-    no-repeat center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -23,7 +24,9 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin); */
+  position: relative;
   color: rgb(231, 231, 231);
+  margin-bottom: 200px;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
@@ -38,29 +41,45 @@
 body {
   font-family: "Roboto", Arial, sans-serif;
   min-height: 100vh;
-  /* background: url(https://img.freepik.com/free-photo/black-sand-beach-macro-photography-silky-black-beach-texture-with-shallow-depth-field-minimalistic-black-background-tenerife-voulcanic-sandy-shore_1217-1765.jpg?w=826&t=st=1676045910~exp=1676046510~hmac=d0272a76e570943a8d8034c5e2d83b4df7dee95648495093d6cebee66c7993e1) no-repeat center; */
-  background-color: #2b2929;
+  /* background: url(https://img.freepik.com/free-photo/black-sand-beach-macro-photography-silky-black-beach-texture-with-shallow-depth-field-minimalistic-black-background-tenerife-voulcanic-sandy-shore_1217-1765.jpg?w=826&t=st=1676045910~exp=1676046510~hmac=d0272a76e570943a8d8034c5e2d83b4df7dee95648495093d6cebee66c7993e1)
+    no-repeat center; */
+  background-color: #e0dfdf;
 }
 
 /* body::before {
   /* background: url(https://img.freepik.com/free-photo/black-sand-beach-macro-photography-silky-black-beach-texture-with-shallow-depth-field-minimalistic-black-background-tenerife-voulcanic-sandy-shore_1217-1765.jpg?w=826&t=st=1676045910~exp=1676046510~hmac=d0272a76e570943a8d8034c5e2d83b4df7dee95648495093d6cebee66c7993e1) no-repeat center; */
 
 .maintext {
-  background-color: beige;
+  background-color: rgb(0, 0, 0);
+}
+
+.topicbar {
+  margin-top: 50px;
 }
 
 .Articles {
-  margin-top: 300px;
-  color: #eee8e8;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+  color: #050505;
 }
 
 .SingleArticle {
-  margin-top: 300px;
-  color: #eee8e8;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+  color: #050505;
+}
+#commentList {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 header {
-  position: fixed;
+  position: relative;
   width: 100%;
   height: var(--heading-height);
 }
@@ -68,10 +87,9 @@ header {
 /* Create angled background with 'before' pseudo-element */
 header::before {
   content: "";
-  display: block;
   position: absolute;
   left: 0;
-  bottom: 6em;
+  bottom: 3.5em;
   width: 100%;
   height: calc(var(--heading-height) + 10em);
   z-index: -1;
@@ -81,11 +99,11 @@ header::before {
       no-repeat center,
     linear-gradient(#4e4376, #2b5876);
   background-size: cover;
-  border-bottom: 0.2em solid #fff;
+  border-bottom: 0.3em solid #727272;
 }
 
 #subheader {
-  margin-top: 200px;
+  margin-top: 70px;
 }
 
 .NC {
@@ -107,8 +125,8 @@ header::before {
 }
 
 .images {
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
   margin-bottom: 0px;
 }
 
@@ -123,6 +141,7 @@ header::before {
 
 .comments {
   margin-bottom: 80px;
+  padding: 0px;
 }
 
 p.comment_author {

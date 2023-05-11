@@ -17,21 +17,21 @@ import {
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 
-const Votes = ({votes, article_id}) => {
+const CommentVotes = ({commentVotes, comment_id}) => {
   const [changeVotes, setChangeVotes] = useState(0);
 
   const incVotes = () => {
     setChangeVotes((currentVotes) => currentVotes + 1);
-    patchArticleById(article_id, +1);
+    patchCommentById(comment_id, +1);
   };
 
   const decVotes = () => {
     setChangeVotes((currentVotes) => currentVotes - 1);
-    patchArticleById(article_id, -1);
+    patchCommentById(comment_id, -1);
   };
 
   return (
-    <section>
+    <Box sx={{display: "flex", flexDirection: "row", justifyContent: "center"}}>
       <IconButton
         disabled={changeVotes === +1}
         onClick={() => incVotes()}
@@ -40,7 +40,7 @@ const Votes = ({votes, article_id}) => {
       >
         {<ThumbUpAltIcon />}
       </IconButton>
-      <h2>{votes + changeVotes}</h2>
+      <h2>{commentVotes + changeVotes}</h2>
       <IconButton
         disabled={changeVotes === -1}
         onClick={() => decVotes()}
@@ -49,15 +49,8 @@ const Votes = ({votes, article_id}) => {
       >
         {<ThumbDownAltIcon />}
       </IconButton>
-      {/* <button disabled={changeVotes === +1} onClick={() => incVotes()}>
-        👍
-      </button>
-      <h2>{votes + changeVotes}</h2>
-      <button disabled={changeVotes === -1} onClick={() => decVotes()}>
-        👎
-      </button> */}
-    </section>
+    </Box>
   );
 };
 
-export default Votes;
+export default CommentVotes;

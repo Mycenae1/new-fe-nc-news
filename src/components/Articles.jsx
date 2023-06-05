@@ -2,11 +2,14 @@ import {useEffect, useState} from "react";
 import {getArticles, fetchTopics} from "./api";
 import {Link, useParams} from "react-router-dom";
 import dayjs from "dayjs";
+import FilterAltIcon from "@mui/icons-material/FilterAlt";
+import FilterListIcon from "@mui/icons-material/FilterList";
 import {
   Card,
   CardContent,
   CardActions,
   CardActionArea,
+  CardMedia,
   Box,
   Button,
   ButtonGroup,
@@ -52,75 +55,69 @@ const Articles = () => {
         <section id="subheader">
           <h2>Click to read articles below</h2>
         </section>
-        <h3>Sort By:</h3>
         <section id="topicbar">
-          <Stack spacing={2} direction="row">
-            <ButtonGroup>
-              <Button
-                variant="contained"
-                color="info"
-                component={Link}
-                to="/"
-                sx={{
-                  maxHeight: "50px",
-                  minHeight: "50px",
-                  minWidth: "50px",
-                  fontSize: "15px",
-                  maxWidth: "100px",
-                }}
-                size="small"
-                textSizeSmall
-              >
-                All
-              </Button>
-              {topics.map((topic) => {
-                return (
-                  <Button
-                    variant="contained"
-                    color="info"
-                    component={Link}
-                    to={`/${topic.slug}/`}
-                    sx={{
-                      maxHeight: "50px",
-                      minHeight: "50px",
-                      minWidth: "50px",
-                      fontSize: "15px",
-                      maxWidth: "100px",
-                    }}
-                    textSizeSmall
-                    size="small"
-                  >
-                    {topic.slug}
-                  </Button>
-                );
-              })}
-            </ButtonGroup>
-          </Stack>
+          <h3>Filters {<FilterListIcon />}:</h3>
         </section>
 
-        <select
-          onChange={(event) => {
-            setSortBy(event.target.value);
-          }}
-        >
-          <option value="created_at">Date</option>
-          <option value="title">Title</option>
-          <option value="votes">Votes</option>
-        </select>
-        <select
-          onChange={(event) => {
-            setOrder(event.target.value);
-          }}
-        >
-          <option value="ASC">Ascending</option>
-          <option value="DESC">Descending</option>
-        </select>
-        {/* <button onClick={() => setSortBy('created_at')}>Date</button>
-      <button onClick={() => setSortBy('title')}>Title</button>
-      <button onClick={() => setSortBy('votes')}>Votes</button>
-      <br/>
-      <button onClick={() => setOrder('ASC')}>Ascending</button>
-      <button onClick={() => setOrder('DESC')}>Descending</button> */}
+        <section id="topicList">
+          <TextField
+            label="Topics"
+            select
+            value={topic || "All"}
+            key="All"
+            // onChange={handleTopicChange}
+            sx={{width: "200px", inWidth: "200px"}}
+          >
+            <MenuItem value="All" key="All" component={Link} to="/">
+              All
+            </MenuItem>
+            {topics.map((topic) => (
+              <MenuItem
+                key={topic.slug}
+                value={topic.slug}
+                component={Link}
+                to={`/${topic.slug}/`}
+              >
+                {topic.slug}
+              </MenuItem>
+            ))}
+          </TextField>
+        </section>
+
+        <section id="sorting">
+          <Box
+            width="600px"
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <TextField
+              label="Sort By"
+              select
+              value={sortBy}
+              onChange={(event) => {
+                setSortBy(event.target.value);
+              }}
+              sx={{width: "200px", inWidth: "200px"}}
+            >
+              <MenuItem value="created_at">Date</MenuItem>
+              <MenuItem value="title">Title</MenuItem>
+              <MenuItem value="votes">Votes</MenuItem>
+            </TextField>
+            <TextField
+              label="Order By"
+              select
+              value={order}
+              onChange={(event) => {
+                setOrder(event.target.value);
+              }}
+            >
+              <MenuItem value="ASC">Ascending</MenuItem>
+              <MenuItem value="DESC">Descending</MenuItem>
+            </TextField>
+          </Box>
+        </section>
 
         <h2 className="sub-header"> Latest Articles:</h2>
         {articleList.map((article) => {

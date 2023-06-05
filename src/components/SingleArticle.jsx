@@ -43,7 +43,6 @@ const SingleArticle = () => {
   if (err) return <p>404 - Article not Found</p>;
   return (
     <section className="SingleArticle">
-      <h2>Article</h2>
       <br />
       <ul>
         <ul key={article.article_id}>

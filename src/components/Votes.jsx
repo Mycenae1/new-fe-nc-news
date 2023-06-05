@@ -31,12 +31,12 @@ const Votes = ({votes, article_id}) => {
   };
 
   return (
-    <section>
+    <section className="votes">
       <IconButton
         disabled={changeVotes === +1}
         onClick={() => incVotes()}
         aria-label="upvote"
-        color="success"
+        color="black"
       >
         {<ThumbUpAltIcon />}
       </IconButton>
@@ -45,7 +45,7 @@ const Votes = ({votes, article_id}) => {
         disabled={changeVotes === -1}
         onClick={() => decVotes()}
         aria-label="downvote"
-        color="error"
+        color="black"
       >
         {<ThumbDownAltIcon />}
       </IconButton>

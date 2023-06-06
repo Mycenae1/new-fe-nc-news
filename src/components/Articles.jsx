@@ -125,12 +125,15 @@ const Articles = () => {
           return (
             <ul key={article.article_id}>
               <Box
-                width="600px"
+                maxWidth="700px" // Set the maximum width for the card container
+                width="100%" // Allow the container to take full width
+                margin="0 auto" // Center the container horizontally
                 sx={{
                   display: "flex",
-                  position: "center",
                   alignItems: "center",
                   flexDirection: "column",
+                  marginTop: "30px",
+                  padding: "0 16px", // Add some horizontal padding to the container
                 }}
               >
                 <Link to={`/articles/${article.article_id}`}>
@@ -139,7 +142,7 @@ const Articles = () => {
                       width: "700px",
                       padding: "32px",
                       position: "center",
-                      backgroundColor: "beige",
+                      backgroundColor: "white",
                       margin: "70px",
                     }}
                     elevation={4}

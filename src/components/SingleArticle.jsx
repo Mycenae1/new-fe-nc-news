@@ -44,7 +44,7 @@ const SingleArticle = () => {
   return (
     <section className="SingleArticle">
       <br />
-      <ul>
+      <ul className="content-wrapper">
         <ul key={article.article_id}>
           <h3>{article.title}</h3>
           <img

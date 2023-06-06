@@ -1,20 +1,11 @@
 .App {
+  width: 100%;
   display: flex;
   text-align: center;
   justify-content: center;
   flex-direction: column;
+  flex-wrap: wrap;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap");
@@ -27,7 +18,7 @@
   --font-size-md: clamp(1.25rem, 0.61vw + 1.1rem, 1.58rem);
   --font-size-lg: clamp(1.56rem, 1vw + 1.31rem, 2.11rem);
   --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
-  --border-radius: 10px;
+  /* --border-radius: 10px; */
 }
 
 body {
@@ -36,6 +27,8 @@ body {
   /* background: url(https://img.freepik.com/free-photo/black-sand-beach-macro-photography-silky-black-beach-texture-with-shallow-depth-field-minimalistic-black-background-tenerife-voulcanic-sandy-shore_1217-1765.jpg?w=826&t=st=1676045910~exp=1676046510~hmac=d0272a76e570943a8d8034c5e2d83b4df7dee95648495093d6cebee66c7993e1)
     no-repeat center; */
   background-color: #e0dfdf;
+  width: 100%;
+  margin: 0;
 }
 
 /* body::before {
@@ -63,8 +56,14 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  flex-wrap: wrap;
   margin-top: 30px;
   color: #050505;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 .votes {
@@ -98,22 +97,45 @@ header {
   height: var(--heading-height);
 }
 
+@media (max-width: 880px) {
+  header {
+    height: 15em;
+  }
+}
+
 /* Create angled background with 'before' pseudo-element */
 header::before {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 3.5em;
+  bottom: 3.9em;
   width: 100%;
   height: calc(var(--heading-height) + 10em);
   z-index: -1;
-  transform: skewY(-3.5deg);
+  transform: skewY(-3.9deg);
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(https://images.unsplash.com/photo-1495464101292-552d0b52fe41?auto=format&fit=crop&w=1350&q=80)
       no-repeat center,
     linear-gradient(#4e4376, #2b5876);
   background-size: cover;
   border-bottom: 0.3em solid #727272;
+}
+
+@media (max-width: 880px) {
+  header::before {
+    width: 260vw;
+    height: 100em;
+    left: 50%;
+    transform: translateX(-50%) skewY(-3.5deg);
+  }
+}
+@media (max-width: 660px) {
+  header::before {
+    width: 380vw;
+    height: 100em;
+    left: 50%;
+    transform: translateX(-50%) skewY(-3.5deg);
+  }
 }
 
 .header_home {
@@ -126,6 +148,7 @@ header::before {
 }
 
 .mainheader {
+  width: 100%;
   font-family: "Roboto", Arial, sans-serif;
   /* background-color: #282c34;
   min-height: 30vh;
@@ -136,7 +159,7 @@ header::before {
   font-size: calc(10px + 2vmin); */
   position: center;
   color: rgb(231, 231, 231);
-  margin-bottom: 200px;
+  margin-top: 100px;
 }
 
 #subheader {
@@ -184,4 +207,12 @@ header::before {
 p.comment_author {
   font-weight: bold;
   font-size: 1.5rem;
+}
+
+p.comment_body {
+  font-size: 0.7rem;
+}
+
+p.comment_posted {
+  font-size: 0.7rem;
 }

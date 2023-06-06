@@ -46,43 +46,42 @@ const Comments = () => {
     <section id="commentList">
       <h3>Comments:</h3>
       <CommentAdder setCommentList={setCommentList} />
-
-      {commentList.map((comment) => {
-        const date = dayjs(comment.created_at).format("DD-MM-YYYY h:mm A");
-        return (
-          <Box
-            width="600px"
-            sx={{
-              display: "flex",
-              position: "center",
-              alignItems: "center",
-              flexDirection: "column",
-            }}
-          >
+      <Box
+        sx={{
+          display: "flex",
+          position: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          marginBottom: "80px",
+        }}
+      >
+        {commentList.map((comment) => {
+          const date = dayjs(comment.created_at).format("DD-MM-YYYY h:mm A");
+          return (
             <Card
               sx={{
-                width: "700px",
+                maxWidth: "700px",
+                // minwidth: "1000px",
+                width: "100%",
                 padding: "32px",
-                position: "center",
-                backgroundColor: "beige",
+                // position: "center",
+                backgroundColor: "white",
                 margin: "70px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                flexDirection: "column",
+                // display: "flex",
+                // justifyContent: "center",
+                // alignItems: "center",
+                // flexDirection: "column",
               }}
               elevation={4}
             >
               <ul key={comment.comment_id} className="comments">
                 <p className="comment_author">{comment.author}</p>
-                <p>{comment.body}</p>
+                <p className="comment_body">{comment.body}</p>
                 <CommentVotes
                   commentVotes={comment.votes}
                   comment_id={comment.comment_id}
                 />
-
-                {/* <p>Votes: {comment.votes}</p> */}
-                <p>Posted: {date}</p>
+                <p className="comment_posted">Posted: {date}</p>
                 {comment.author === "happyamy2016" ? (
                   <Chip
                     label="Delete"
@@ -93,9 +92,9 @@ const Comments = () => {
                 ) : null}
               </ul>
             </Card>
-          </Box>
-        );
-      })}
+          );
+        })}
+      </Box>
     </section>
   );
 };

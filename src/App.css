@@ -123,15 +123,15 @@ header::before {
 
 @media (max-width: 880px) {
   header::before {
-    width: 260vw;
+    width: 120vw;
     height: 100em;
     left: 50%;
     transform: translateX(-50%) skewY(-3.5deg);
   }
 }
-@media (max-width: 660px) {
+@media (max-width: 425px) {
   header::before {
-    width: 380vw;
+    width: 180vw;
     height: 100em;
     left: 50%;
     transform: translateX(-50%) skewY(-3.5deg);

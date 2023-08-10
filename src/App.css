@@ -97,6 +97,7 @@ header {
   height: var(--heading-height);
 }
 
+/*Change later*/
 @media (max-width: 880px) {
   header {
     height: 15em;
@@ -136,6 +137,9 @@ header::before {
     left: 50%;
     transform: translateX(-50%) skewY(-3.5deg);
   }
+  .SingleArticle {
+    width: 190vw;
+  }
 }
 
 @media (max-width: 375px) {
@@ -144,6 +148,9 @@ header::before {
     height: 100em;
     left: 50%;
     transform: translateX(-50%) skewY(-3.5deg);
+  }
+  .SingleArticle {
+    width: 220vw;
   }
 }
 

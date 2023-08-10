@@ -136,6 +136,22 @@ header::before {
     left: 50%;
     transform: translateX(-50%) skewY(-3.5deg);
   }
+  .mainheader {
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 375px) {
+  header::before {
+    width: 220vw;
+    height: 100em;
+    left: 50%;
+    transform: translateX(-50%) skewY(-3.5deg);
+  }
+  .mainheader {
+    margin-bottom: 80px;
+    margin-top: 30px;
+  }
 }
 
 .header_home {
